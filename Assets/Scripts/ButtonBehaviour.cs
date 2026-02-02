@@ -11,11 +11,14 @@ public class ButtonBehaviour : MonoBehaviour
     //public GameObject PauseMenu;
     public GameObject ConfirmationScreen;
 
+    public GameObject MainMenu;
+
     public void StartGame()
     {
-        SceneManager.LoadScene("Main Game"); //or whatever the next menu must be
+        //SceneManager.LoadScene("Main Game"); //or whatever the next menu must be
         //Or if you're wanting this in the same scene...
         TitleMenu.SetActive(false);
+        MainMenu.SetActive(true);
         Time.timeScale = 1; //should probably make a singleton to reference here!
     }
 
@@ -35,6 +38,12 @@ public class ButtonBehaviour : MonoBehaviour
     public void LeaveOptionsToTitle() //Can I do the 'back' function for any menu in one function? Does that need an array?
     {
         OptionsMenu.SetActive(false);
+        TitleMenu.SetActive(true);
+    }
+
+    public void LeaveMainMenuToTitle()
+    {
+        MainMenu.SetActive(false);
         TitleMenu.SetActive(true);
     }
 

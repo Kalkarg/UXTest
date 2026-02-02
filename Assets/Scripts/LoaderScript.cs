@@ -27,7 +27,7 @@ public class LoaderScript : MonoBehaviour
         operation.allowSceneActivation = false; //Unity loads in the scene immediately when it's done by default. This disables in when the button is pressed.
         while (_progress < 1f) //Unity measure scene loading from 0 to 1f depending on how loaded it is.
         {
-            //_progress =  Mathf.Clamp01(operation.progress / 0.9f); //0 - 0.9f for Unity is actually loading the scene, while the last .1f is switching to it. This divides loading bar progress to reflect that, so it doesn't stay at 90% when done. Clamp01 keeps loading number in bounds of 0 and 1.
+            _progress =  Mathf.Clamp01(operation.progress / 0.9f); //0 - 0.9f for Unity is actually loading the scene, while the last .1f is switching to it. This divides loading bar progress to reflect that, so it doesn't stay at 90% when done. Clamp01 keeps loading number in bounds of 0 and 1.
             fill.fillAmount = _progress; //Fills up the bar depending on the progress value of async.
             loadingText.text = "Loading..." + (int)(_progress * 100f) + "%"; //Tells the loading text how much the _progress value is as a percentage.
             yield return null;
