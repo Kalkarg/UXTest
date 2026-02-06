@@ -2,6 +2,7 @@ using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening; //For DOTween
 
 public class ButtonBehaviour : MonoBehaviour
 {
@@ -12,14 +13,18 @@ public class ButtonBehaviour : MonoBehaviour
     public GameObject ConfirmationScreen;
 
     public GameObject MainMenu;
+    public GameObject LoginMenu;
+
+    public Vector3 MenuGlideValue;
 
     public void StartGame()
     {
         //SceneManager.LoadScene("Main Game"); //or whatever the next menu must be
         //Or if you're wanting this in the same scene...
-        TitleMenu.SetActive(false);
-        MainMenu.SetActive(true);
-        Time.timeScale = 1; //should probably make a singleton to reference here!
+        //TitleMenu.SetActive(false);
+        LoginMenu.SetActive(true);
+        //LoginMenu.transform.DOMove(LoginMenu.transform.position + MenuGlideValue, 1f); //Asks the DOTween extension to move a set amount. This doesn't move the object correctly for some reason, as it always moves to the exact same spot.
+        Debug.Log("Moved menu");
     }
 
     public void OptionsButton() //I remembered how these work, which I'm happy with myself about
