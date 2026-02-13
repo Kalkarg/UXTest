@@ -14,8 +14,11 @@ public class ButtonBehaviour : MonoBehaviour
 
     public GameObject MainMenu;
     public GameObject LoginMenu;
+    public GameObject SideMenuPanel;
 
     public Vector3 MenuGlideValue;
+
+    public AnimationCurve DOTweenMenuGliding;
 
     public void StartGame()
     {
@@ -68,6 +71,16 @@ public class ButtonBehaviour : MonoBehaviour
     {
         ConfirmationScreen.SetActive(false);
         Debug.Log("Defaults weren't set");
+    }
+
+    public void TheLeftSideMenu()
+    {
+        SideMenuPanel.transform.DOMove(transform.position + Vector3.right *50, 0.5f).SetEase(DOTweenMenuGliding); //Move cube by 50 x, at half speed, with a delay of 1 second. For some reason, both of these don't work as expected.
+    }
+
+    public void LeaveTheSideMenu()
+    {
+        SideMenuPanel.transform.DOMove(transform.position + Vector3.left *50, 0.5f).SetEase(DOTweenMenuGliding); //Move cube by 50 x, at half speed, with a delay of 1 second.
     }
 
     public void LeaveApplication() //The exit button on the main menu

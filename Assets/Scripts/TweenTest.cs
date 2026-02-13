@@ -13,7 +13,7 @@ public class TweenTest : MonoBehaviour
     public Button startbutton;
     public async Task Shake() //Ienumerator
     {
-        await RectTransform.DOPunchAnchorPos(new Vector2 (-400,0), 2, 1).AsyncWaitForCompletion(); 
+        await RectTransform.DOPunchAnchorPos(new Vector2 (-400,0), 2, 1).AsyncWaitForCompletion();  //Sets up a shake function with async without finishing it until it's triggered.
         Debug.Log("Something cool happened");
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
