@@ -45,7 +45,7 @@ public class TweenTest : MonoBehaviour
     IEnumerator CoolerThing()
     {
         Debug.Log("Cooler Thing activated");
-        Tween coolthing = transform.DOMove(transform.position + Vector3.right * 100, 0.75f).SetLoops(3, LoopType.Yoyo); //Wait for the loop to complete before executing again?
+        Tween coolthing = transform.DOMove(transform.position + Vector3.up * 100, 0.5f).SetLoops(3, LoopType.Yoyo); //Wait for the loop to complete before executing again?
         startbutton.interactable = false;
         yield return coolthing.WaitForCompletion();
         //Figure out how to disable buttons

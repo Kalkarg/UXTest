@@ -80,7 +80,7 @@ public class ButtonBehaviour : MonoBehaviour
 
     public void LeaveTheSideMenu()
     {
-        SideMenuPanel.transform.DOMove(transform.position + new Vector3(-50,0,0), 0.5f).SetEase(DOTweenMenuGliding); //Move cube by 50 x, at half speed, with a delay of 1 second.
+        SideMenuPanel.transform.DOMove(transform.position + new Vector3(50,0,0), 0.5f).SetEase(DOTweenMenuGliding); //Move cube by 50 x, at half speed, with a delay of 1 second.
     }
 //SideMenuPanel.transform.DOMove(new Vector2 (-50,0), 1, 1).SetEase(DOTweenMenuGliding); //Why is set ease considered a bool
     public void LeaveApplication() //The exit button on the main menu
