@@ -1,7 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 using UnityEngine.SceneManagement;
 using TMPro;
+using DG.Tweening;
 
 public class AnotherLoginScript : MonoBehaviour
 {
@@ -51,10 +53,17 @@ public class AnotherLoginScript : MonoBehaviour
         }
         else
         {
-            incorrectInfoText.SetActive(true); //Activates the 'username or password is incorrect' text.
+            StartCoroutine(WrongTextAppears());
             usernameCorrect = false; //Make sure that the user can't input the correct username and password at seperate attempts.
             passwordCorrect = false;
             Debug.Log("Check failed");
         }
+    }
+    IEnumerator WrongTextAppears()
+    {
+        Debug.Log("Wrong text appears");
+        incorrectInfoText.SetActive(true); //Activates the 'username or password is incorrect' text.
+        yield return new WaitForSeconds(4); //Wait for the animation to finish
+        incorrectInfoText.SetActive(false); //Should restart the animation if it ever becomes true again.
     }
 }
