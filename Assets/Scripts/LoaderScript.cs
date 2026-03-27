@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class LoaderScript : MonoBehaviour
 {
@@ -13,7 +14,6 @@ public class LoaderScript : MonoBehaviour
     public Button loadLevelButton;
     [Range(0,1)] //Adds a slider for the inspector, between 0 and 1. For tbe _progress float.
     public float _progress = 0f; //The progress our loading bar uses to determine it's fill.
-
     public void OnLoadLevelClick(int sceneIndex) //The int declaration here allows me to add in any scene number to the button function!
     {
         loadingScreen.SetActive(true);
@@ -28,7 +28,7 @@ public class LoaderScript : MonoBehaviour
         while (_progress < 1f) //Unity measure scene loading from 0 to 1f depending on how loaded it is.
         {
             _progress =  Mathf.Clamp01(operation.progress / 0.9f); //0 - 0.9f for Unity is actually loading the scene, while the last .1f is switching to it. This divides loading bar progress to reflect that, so it doesn't stay at 90% when done. Clamp01 keeps loading number in bounds of 0 and 1.
-            fill.fillAmount = _progress; //Fills up the bar depending on the progress value of async.
+            fill.fillAmount = _progress; //Fills up the bar depending on the progress value of async. You can use slider.value if you're using a slider.
             loadingText.text = "Loading..." + (int)(_progress * 100f) + "%"; //Tells the loading text how much the _progress value is as a percentage.
             yield return null;
         }
